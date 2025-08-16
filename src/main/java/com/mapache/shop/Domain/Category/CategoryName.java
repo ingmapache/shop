@@ -22,7 +22,7 @@ public class CategoryName {
         this.value = categoryName;
     }
 
-    public String value()
+    public String getName()
     {
         return value;
     }
