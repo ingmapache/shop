@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Category {
 
     private final Long id;
-    private final CategoryName name;
+    private CategoryName name;
 
     public Category(CategoryName categoryName) {
         this.id = null;
@@ -23,6 +23,16 @@ public class Category {
 
     public CategoryName getName() {
         return name;
+    }
+
+    public void rename(CategoryName newName)
+    {
+        if(newName == null)
+        {
+            throw new IllegalArgumentException("Category name cannot be null or empty");
+        }
+
+        this.name = newName;
     }
 
     @Override
