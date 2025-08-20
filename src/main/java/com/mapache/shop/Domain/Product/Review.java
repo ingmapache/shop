@@ -7,9 +7,9 @@ import java.util.Optional;
 public class Review {
 
     private final Long id;
-    private final ReviewRating reviewRating;
-    private final ReviewText reviewText;
-    private final Image reviewImage;
+    private ReviewRating reviewRating;
+    private ReviewText reviewText;
+    private Image reviewImage;
 
     public Review(Long id, ReviewRating reviewRating, ReviewText reviewText, Image reviewImage) {
         this.id = Objects.requireNonNull(id, "Id cannot be null when loading from DB");
@@ -39,6 +39,31 @@ public class Review {
 
     public Optional<Image> getReviewImage() {
         return Optional.ofNullable(reviewImage);
+    }
+
+    public void updateRating(ReviewRating newRating)
+    {
+        if(newRating == null)
+        {
+            throw new IllegalArgumentException("New rating cannot be null.");
+        }
+
+        this.reviewRating = newRating;
+    }
+
+    public void updateReviewText(ReviewText newText)
+    {
+        if(newText == null)
+        {
+            throw new IllegalArgumentException("New text cannot be null.");
+        }
+
+        this.reviewText = newText;
+    }
+
+    public void updateImage(Image newImage)
+    {
+        this.reviewImage = newImage;
     }
 
     @Override
