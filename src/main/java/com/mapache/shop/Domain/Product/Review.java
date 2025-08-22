@@ -7,19 +7,22 @@ import java.util.Optional;
 public class Review {
 
     private final Long id;
+    private final Long userId;
     private ReviewRating reviewRating;
     private ReviewText reviewText;
     private Image reviewImage;
 
-    public Review(Long id, ReviewRating reviewRating, ReviewText reviewText, Image reviewImage) {
-        this.id = Objects.requireNonNull(id, "Id cannot be null when loading from DB");
+    public Review(Long incId, Long incUserid, ReviewRating reviewRating, ReviewText reviewText, Image reviewImage) {
+        this.id = Objects.requireNonNull(incId, "Id cannot be null when loading from DB");
+        this.userId = Objects.requireNonNull(incUserid, "User id cannot be null.");
         this.reviewRating = Objects.requireNonNull(reviewRating, "Rating cannot be null");
         this.reviewText = Objects.requireNonNull(reviewText, "Review text cannot be null");
         this.reviewImage = reviewImage;
     }
 
-    public Review(ReviewRating reviewRating, ReviewText reviewText, Image reviewImage) {
+    public Review(ReviewRating reviewRating, Long incUserid, ReviewText reviewText, Image reviewImage) {
         this.id = null;
+        this.userId = Objects.requireNonNull(incUserid, "User id cannot be null.");
         this.reviewRating = Objects.requireNonNull(reviewRating, "Rating cannot be null");
         this.reviewText = Objects.requireNonNull(reviewText, "Review text cannot be null");
         this.reviewImage = reviewImage;
@@ -27,6 +30,10 @@ public class Review {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getUserId(){
+        return userId;
     }
 
     public ReviewRating getRating() {
