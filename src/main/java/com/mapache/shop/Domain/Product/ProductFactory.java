@@ -41,7 +41,7 @@ public class ProductFactory {
 
         return new Product(incProductName, brand, incDescription, incPrice, incStock, incImages);
     }
-wqq
+
     public Product reconstitute(
             Long id,
             ProductName incProductName,
