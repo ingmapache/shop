@@ -25,6 +25,7 @@ public class ProductFactory {
             Brand incBrand,
             ProductDescription incDescription,
             Money incPrice,
+            ProductStock incStock,
             List<Image> incImages)
     {
         Objects.requireNonNull(incProductName, "Product name cannot be null.");
@@ -32,25 +33,27 @@ public class ProductFactory {
         Objects.requireNonNull(incDescription, "Description cannot be null.");
         Objects.requireNonNull(incPrice, "Product price cannot be null.");
         Objects.requireNonNull(incImages, "Images cannot be null.");
+        Objects.requireNonNull(incStock, "Stock cannot be null.");
 
         if(incImages.isEmpty()) throw new IllegalArgumentException("Product must be created with at least 1 image.");
 
         Brand brand = brandRepo.findById(incBrand.getId()).orElseThrow(() -> new IllegalArgumentException("Brand doesn't exist."));
 
-        return new Product(incProductName, brand, incDescription, incPrice, incImages);
+        return new Product(incProductName, brand, incDescription, incPrice, incStock, incImages);
     }
-
+wqq
     public Product reconstitute(
             Long id,
             ProductName incProductName,
             Brand incBrand,
             ProductDescription incDescription,
             Money incPrice,
+            ProductStock incStock,
             List<Image> incImages
     )
     {
         if(id <= 0) throw new IllegalArgumentException("Product Id cannot be 0 or negative.");
 
-        return new Product(incProductName, incBrand, incDescription, incPrice, incImages);
+        return new Product(incProductName, incBrand, incDescription, incPrice,  incStock, incImages);
     }
 }
