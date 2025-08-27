@@ -1,4 +1,4 @@
-package com.mapache.shop.Domain.Product;
+package com.mapache.shop.Domain.Shared;
 
 import java.math.BigDecimal;
 import java.util.Objects;

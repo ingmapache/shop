@@ -2,6 +2,7 @@ package com.mapache.shop.Domain.Product;
 
 import com.mapache.shop.Domain.Brand.Brand;
 import com.mapache.shop.Domain.Shared.Image;
+import com.mapache.shop.Domain.Shared.Money;
 
 import java.util.List;
 import java.util.Objects;

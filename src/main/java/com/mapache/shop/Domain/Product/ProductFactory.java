@@ -3,6 +3,7 @@ package com.mapache.shop.Domain.Product;
 import com.mapache.shop.Domain.Brand.Brand;
 import com.mapache.shop.Domain.Brand.BrandRepository;
 import com.mapache.shop.Domain.Shared.Image;
+import com.mapache.shop.Domain.Shared.Money;
 
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +43,7 @@ public class ProductFactory {
         return new Product(incProductName, brand, incDescription, incPrice, incStock, incImages);
     }
 
-    public Product reconstitute(
+    public Product fromStorage(
             Long id,
             ProductName incProductName,
             Brand incBrand,
