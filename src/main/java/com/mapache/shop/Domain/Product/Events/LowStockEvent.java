@@ -5,14 +5,17 @@ import com.mapache.shop.Domain.Product.ProductStock;
 import com.mapache.shop.Domain.Shared.DomainEvent;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 public class LowStockEvent implements DomainEvent {
 
     private final Long productId;
     private final Long sellerId;
-    private ProductName productName;
+    private final ProductName productName;
     private final ProductStock productStock;
+    private final LocalDateTime ocurredAt;
+
 
     public LowStockEvent(Long incProductId, ProductName incProductName, Long incSellerId, ProductStock incProductStock)
     {
@@ -20,6 +23,7 @@ public class LowStockEvent implements DomainEvent {
         this.productStock = Objects.requireNonNull(incProductStock, "Product stock cannot be null.");
         this.sellerId = Objects.requireNonNull(incSellerId, "Seller id cannot be null.");
         this.productName = Objects.requireNonNull(incProductName, "Product name cannot be null.");
+        this.ocurredAt = java.time.LocalDateTime.now();
     }
 
     public Long getProductId()
@@ -44,7 +48,7 @@ public class LowStockEvent implements DomainEvent {
 
     @Override
     public LocalDateTime ocurredAt() {
-        return java.time.LocalDateTime.now();
+        return ocurredAt;
     }
 
     @Override
