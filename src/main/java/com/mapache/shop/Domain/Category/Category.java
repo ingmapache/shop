@@ -52,11 +52,11 @@ public class Category {
         return (id != null) ? Objects.hash(id) : Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name=" + name +
-                '}';
-    }
+        @Override
+        public String toString() {
+            return "Category{" +
+                    "id=" + id +
+                    ", name=" + name +
+                    '}';
+        }
 }
