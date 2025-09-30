@@ -54,7 +54,7 @@ public class ProductFactory {
         Brand brand = brandRepo.findById(incBrand.getId()).orElseThrow(() -> new IllegalArgumentException("Brand doesn't exist."));
         Category category = categoryRepo.findById(incCategory.getId()).orElseThrow(() -> new IllegalArgumentException("Category doesn't exist."));
 
-        return new Product(incSellerId, incProductName, brand, category, incDescription, incPrice, incStock, incImages);
+        return new Product(true, incSellerId, incProductName, brand, category, incDescription, incPrice, incStock, incImages);
     }
 
     public Product fromStorage(
@@ -72,6 +72,6 @@ public class ProductFactory {
         if(incId <= 0) throw new IllegalArgumentException("Product Id cannot be 0 or negative.");
         if(incSellerId <= 0) throw new IllegalArgumentException("Seller Id cannot be 0 or negative.");
 
-        return new Product(incId, incSellerId, incProductName, incBrand, incCategory, incDescription, incPrice,  incStock, incImages);
+        return new Product(incId, true, incSellerId, incProductName, incBrand, incCategory, incDescription, incPrice,  incStock, incImages);
     }
 }

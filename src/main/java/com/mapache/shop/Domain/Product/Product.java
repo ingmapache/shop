@@ -12,6 +12,7 @@ import java.util.*;
 
 public class Product {
     private final Long id;
+    private boolean Status;
     private final Long sellerId;
     private ProductName productName;
     private Brand productBrand;
@@ -24,6 +25,7 @@ public class Product {
     private final  List<DomainEvent> domainEvents = new ArrayList<>();
 
     public Product(
+            boolean incStatus,
             Long incSellerId,
             ProductName incproductName,
             Brand incProductBrand,
@@ -34,6 +36,9 @@ public class Product {
             List<Image> incProductImages)
     {
         this.id = null;
+
+        this.Status = incStatus;
+
         this.sellerId = Objects.requireNonNull(incSellerId, "Seller id cannot be null.");
         if (incSellerId <= 0) throw new IllegalArgumentException("Seller id must be greater than 0.");
 
@@ -48,6 +53,7 @@ public class Product {
 
     public Product(
             Long incId,
+            boolean incStatus,
             Long incSellerId,
             ProductName incProductName,
             Brand incProductBrand,
@@ -59,6 +65,8 @@ public class Product {
     ) {
         this.id = Objects.requireNonNull(incId, "Id cannot be null");
         if (incId <= 0) throw new IllegalArgumentException("Id must be greater than 0.");
+
+        this.Status = incStatus;
 
         this.sellerId = Objects.requireNonNull(incSellerId, "Seller id cannot be null.");
         if (incSellerId <= 0) throw new IllegalArgumentException("Seller id must be greater than 0.");
@@ -79,6 +87,8 @@ public class Product {
     public Optional<Long> getId() {
         return Optional.ofNullable(id);
     }
+
+    public  boolean getStatus() { return Status; }
 
     public ProductName getProductName()
     {
@@ -131,6 +141,11 @@ public class Product {
         {
             domainEvents.add(new LowStockEvent(id,productName, sellerId, productStock));
         }
+    }
+
+    public void updateStatus(boolean newStatus)
+    {
+        Status = newStatus;
     }
 
     public void renameProduct(ProductName newProductName)
